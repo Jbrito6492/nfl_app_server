@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const models = require("../models");
 
 mongoose.connect("mongodb://localhost/nfl_app_server", {
   useNewUrlParser: true,

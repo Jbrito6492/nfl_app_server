@@ -6,7 +6,7 @@ const ScheduleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "user",
   },
-  schedule: [
+  week: [
     {
       type: Schema.Types.ObjectId,
       ref: "game",
@@ -14,10 +14,10 @@ const ScheduleSchema = new Schema({
   ],
 });
 
-SongSchema.statics.findGame = function (id) {
+ScheduleSchema.statics.findGame = function (id) {
   return this.findById(id)
     .populate("game")
-    .then((schedule) => schedule.game);
+    .then((week) => week.game);
 };
 
 mongoose.model("schedule", ScheduleSchema);

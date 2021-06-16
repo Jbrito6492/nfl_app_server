@@ -1,10 +1,9 @@
 const express = require("express");
+const morgan = require("morgan");
 var { graphqlHTTP } = require("express-graphql");
 const db = require("./database/config.js");
 const app = express();
 const schema = require("./schema/schema");
-
-app.use(morgan("dev"));
 
 app.use(morgan("dev"));
 
@@ -15,3 +14,5 @@ app.use(
     graphiql: true,
   })
 );
+
+module.exports = app;

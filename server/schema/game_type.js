@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
 const DateType = require("./date_type");
-const Game = mongoose.model("game");
 
 const GameType = new GraphQLObjectType({
-  name: "GameType",
+  name: "Game",
   fields: () => ({
     id: { type: GraphQLID },
     awayTeam: { type: GraphQLString },

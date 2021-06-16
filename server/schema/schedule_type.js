@@ -5,7 +5,7 @@ const GameType = require("./game_type");
 const Schedule = mongoose.model("schedule");
 
 const ScheduleType = new GraphQLObjectType({
-  name: "ScheduleType",
+  name: "Schedule",
   fields: () => ({
     id: { type: GraphQLID },
     games: { type: GraphQLList },
