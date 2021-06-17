@@ -1,18 +1,24 @@
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
 const mongoose = require("mongoose");
-const ScheduleType = require("./schedule_type");
+const Game = mongoose.model("game");
+const DateType = require("./date_type");
+const GameType = require("./game_type");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    addSchedule: {
-      type: ScheduleType,
+    createGame: {
+      type: GameType,
       args: {
-        week: { type: GraphQLString },
+        awayTeam: { type: GraphQLString },
+        homeTeam: { type: GraphQLString },
+        stadium: { type: GraphQLString },
+        location: { type: GraphQLString },
+        dateTime: { type: DateType },
       },
-      resolve(parentValue, { week }) {
-        return new Schedule({ week }).save();
+      resolve(parent, args) {
+        return new Game(args).save();
       },
     },
   },
