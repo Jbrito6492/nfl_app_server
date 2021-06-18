@@ -12,4 +12,15 @@ const GameSchema = new Schema({
   },
 });
 
+GameSchema.statics.addGames = function (schedule) {
+  const Game = mongoose.model("game");
+  Game.insertMany(schedule, function (err, docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("records have successfully been inserted into database");
+    }
+  });
+};
+
 mongoose.model("game", GameSchema);
